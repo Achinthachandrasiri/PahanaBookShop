@@ -1,0 +1,218 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>User Registration - Pahana Bookshop</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1C2833 0%, #2E4053 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: rgba(244, 246, 246, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(28, 40, 51, 0.3);
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            border: 1px solid rgba(170, 183, 184, 0.3);
+        }
+
+        h2 {
+            text-align: center;
+            color: #1C2833;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #AAB7B8;
+            font-size: 16px;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            background-color: transparent;
+            padding: 0 5px;
+        }
+
+        input[type="email"], input[type="password"], input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #D5DBDB;
+            border-radius: 10px;
+            background-color: #F4F6F6;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            outline: none;
+            color: #1C2833;
+        }
+
+        input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focus {
+            border-color: #2E4053;
+            background-color: #F4F6F6;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 64, 83, 0.2);
+        }
+
+        input:focus + label,
+        input:not(:placeholder-shown) + label {
+            top: -10px;
+            left: 12px;
+            font-size: 12px;
+            color: #2E4053;
+            background-color: #F4F6F6;
+            font-weight: 500;
+        }
+
+        input::placeholder {
+            color: transparent;
+        }
+
+        input[type="submit"] {
+            background: linear-gradient(135deg, #2E4053 0%, #1C2833 100%);
+            color: #F4F6F6;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background: linear-gradient(135deg, #1C2833 0%, #2E4053 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(28, 40, 51, 0.4);
+        }
+
+        input[type="submit"]:active {
+            transform: translateY(0);
+        }
+
+        .error {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .links a {
+            color: #2E4053;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            border: 2px solid #AAB7B8;
+            background-color: transparent;
+        }
+
+        .links a:hover {
+            background-color: #2E4053;
+            color: #F4F6F6;
+            border-color: #2E4053;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 64, 83, 0.3);
+        }
+
+
+        input:valid {
+            border-color: #27ae60;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+                padding: 30px 25px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .links a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Enhanced focus states */
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(46, 64, 83, 0.1);
+        }
+
+        /* Smooth animations */
+        * {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Register - Pahana Bookshop</h2>
+        <form action="register" method="post">
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder=" " required>
+                <label for="email">Email Address</label>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" name="password" placeholder=" " required>
+                <label for="password">Password</label>
+            </div>
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder=" " required>
+                <label for="name">Full Name</label>
+            </div>
+            <div class="form-group">
+                <input type="text" id="mobile" name="mobile" placeholder=" " required pattern="[0-9]{10}">
+                <label for="mobile">Mobile Number</label>
+            </div>
+            <input type="submit" value="Create Account">
+        </form>
+        <div class="links">
+            <a href="index.jsp">Back to Home</a>
+            <a href="login.jsp">Already have an account?</a>
+        </div>
+    </div>
+</body>
+</html>

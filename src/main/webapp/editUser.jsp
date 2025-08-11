@@ -1,0 +1,239 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Edit User - Pahana Bookshop</title>
+    <style>
+        /* Existing CSS remains unchanged */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1C2833 0%, #2E4053 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: rgba(244, 246, 246, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(28, 40, 51, 0.3);
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            border: 1px solid rgba(170, 183, 184, 0.3);
+        }
+
+        h2 {
+            text-align: center;
+            color: #1C2833;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .message {
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .error {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: #e74c3c;
+            border: 1px solid rgba(231, 76, 60, 0.3);
+        }
+
+        .success {
+            background-color: rgba(39, 174, 96, 0.1);
+            color: #27ae60;
+            border: 1px solid rgba(39, 174, 96, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #AAB7B8;
+            font-size: 16px;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            background-color: transparent;
+            padding: 0 5px;
+        }
+
+        input[type="email"], input[type="password"], input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #D5DBDB;
+            border-radius: 10px;
+            background-color: #F4F6F6;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            outline: none;
+            color: #1C2833;
+        }
+
+        input[readonly] {
+            background-color: #E8F1F5;
+            color: #566573;
+            cursor: not-allowed;
+        }
+
+        input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focus {
+            border-color: #2E4053;
+            background-color: #F4F6F6;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 64, 83, 0.2);
+        }
+
+        input:focus + label,
+        input:not(:placeholder-shown) + label,
+        input[value]:not([value=""]) + label {
+            top: -10px;
+            left: 12px;
+            font-size: 12px;
+            color: #2E4053;
+            background-color: #F4F6F6;
+            font-weight: 500;
+        }
+
+        input::placeholder {
+            color: transparent;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2E4053 0%, #1C2833 100%);
+            color: #F4F6F6;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #1C2833 0%, #2E4053 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(28, 40, 51, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #2E4053;
+            border: 2px solid #AAB7B8;
+            width: 100%;
+        }
+
+        .btn-secondary:hover {
+            background-color: #2E4053;
+            color: #F4F6F6;
+            border-color: #2E4053;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 64, 83, 0.3);
+        }
+
+        .btn-primary:active, .btn-secondary:active {
+            transform: translateY(0);
+        }
+
+        .no-user-message {
+            text-align: center;
+            padding: 30px;
+            background-color: rgba(231, 76, 60, 0.1);
+            border: 1px solid rgba(231, 76, 60, 0.3);
+            border-radius: 10px;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+                padding: 30px 25px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+        }
+
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(46, 64, 83, 0.1);
+        }
+
+        * {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .container {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Edit User - Pahana Bookshop</h2>
+               <form action="updateUser" method="post">
+                   <input type="hidden" name="_method" value="PUT">
+                   <div class="form-group">
+                       <input type="email" id="email" name="email" value="${user.email}" placeholder=" " readonly>
+                       <label for="email">Email Address</label>
+                   </div>
+                   <div class="form-group">
+                       <input type="password" id="password" name="password" value="${user.password}" placeholder=" " required>
+                       <label for="password">Password</label>
+                   </div>
+                   <div class="form-group">
+                       <input type="text" id="name" name="name" value="${user.name}" placeholder=" " required>
+                       <label for="name">Full Name</label>
+                   </div>
+                   <div class="form-group">
+                       <input type="text" id="mobile" name="mobile" value="${user.mobile}" placeholder=" " required pattern="[0-9]{10}">
+                       <label for="mobile">Mobile Number</label>
+                   </div>
+                   <button type="submit" class="btn btn-primary">Update User</button>
+                   <a href="users" class="btn btn-secondary">Back to User List</a>
+               </form>
+    </div>
+</body>
+</html>
