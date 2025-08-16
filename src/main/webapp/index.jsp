@@ -1,35 +1,33 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Welcome - Pahana Bookshop</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 100px;
-        }
-        h2 {
-            color: #333;
-        }
-        .btn {
-            display: inline-block;
-            margin: 20px;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-        }
-        .btn:hover {
-            background-color: #45a049;
-        }
-    </style>
+    <title>User Login - Pahana Bookshop</title>
+    <link rel="stylesheet" href="styles/login.css">
 </head>
 <body>
-    <h2>Hello World!</h2>
-    <p>Welcome to Pahana Bookshop</p>
+    <div class="container">
+        <h2>Login - Pahana Bookshop</h2>
+        <form action="login" method="post">
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder=" " required>
+                <label for="email">Email Address</label>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" name="password" placeholder=" " required>
+                <label for="password">Password</label>
+            </div>
+            <input type="submit" value="Sign In">
+        </form>
 
-    <!-- Add this link to redirect to login page -->
-    <a href="register.jsp" class="btn">Go to Register Page</a>
-    <a href="users">View Registered Users</a>
+        <% if (request.getAttribute("error") != null) { %>
+            <div class="error"><%= request.getAttribute("error") %></div>
+        <% } %>
+
+        <div class="links">
+            <a href="customers">View Customers</a>
+            <a href="register.jsp">Create New Account</a>
+            <a href="users">View Registered Users</a>
+        </div>
+    </div>
 </body>
 </html>

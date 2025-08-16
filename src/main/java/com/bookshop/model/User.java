@@ -4,18 +4,20 @@ public class User {
     private String email;
     private String password;  // Changed from int to String
     private String name;
-    private String mobile;    // Changed from int to String
+    private String mobile;
+    private String role;// Changed from int to String
 
     // Constructors
     public User() {
         // Default constructor
     }
 
-    public User(String email, String password, String name, String mobile) {
+    public User(String email, String password, String name, String mobile, String role) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.mobile = mobile;
+        this.role = role;
     }
 
     // Getters and Setters
@@ -25,6 +27,10 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getRole() {
+        return role;
     }
 
     public String getPassword() {
@@ -43,6 +49,10 @@ public class User {
         this.name = name;
     }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public String getMobile() {
         return mobile;
     }
@@ -59,20 +69,25 @@ public class User {
                 ", password='[PROTECTED]'" +
                 ", name='" + name + '\'' +
                 ", mobile='" + mobile + '\'' +
+                ", role='" + role + '\'' +
                 '}';
     }
 
-    // equals() and hashCode() for comparisons
+    // equals() and hashCode() including role for more precise comparisons
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return email.equals(user.email);
+        return email.equals(user.email) &&
+                ((role == null && user.role == null) || (role != null && role.equals(user.role)));
     }
 
     @Override
     public int hashCode() {
-        return email.hashCode();
+        int result = email.hashCode();
+        result = 31 * result + (role != null ? role.hashCode() : 0);
+        return result;
     }
+
 }

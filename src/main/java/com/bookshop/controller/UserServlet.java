@@ -2,7 +2,6 @@ package com.bookshop.controller;
 
 import com.bookshop.model.User;
 import com.bookshop.service.UserService;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +25,7 @@ public class UserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        String path = req.getServletPath();   // /register  or  /deleteUser
+        String path = req.getServletPath();
 
         switch (path) {
             case "/register":
@@ -58,20 +57,24 @@ public class UserServlet extends HttpServlet {
             String password = req.getParameter("password");
             String name     = req.getParameter("name");
             String mobile   = req.getParameter("mobile");
+            String role     = req.getParameter("role");
 
             try {
-                userService.saveUser(new User(email, password, name, mobile));
+                userService.saveUser(new User(email, password, name, mobile, role));
                 List<User> users = userService.getUsers();
                 req.setAttribute("users", users);
                 req.setAttribute("successMessage", "User registered successfully!");
                 req.getRequestDispatcher("viewUsers.jsp").forward(req, resp);
-            } catch (IllegalArgumentException ex) {
+
+            } catch (IllegalArgumentException ex) { // Validation errors
                 resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-                out.println("<h3>Error: " + ex.getMessage() + "</h3>");
+                out.println("<h3>Validation Error: " + ex.getMessage() + "</h3>");
                 out.println("<a href='register.jsp'>Try Again</a>");
-            } catch (Exception ex) {
+
+            } catch (Exception ex) { // Internal server errors
                 resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                out.println("<h3>Error: Failed to register user. " + ex.getMessage() + "</h3>");
+                out.println("<h3>Internal Server Error: Unable to register user.</h3>");
+                out.println("<p>Details: " + ex.getMessage() + "</p>");
                 out.println("<a href='register.jsp'>Try Again</a>");
             }
         }
@@ -97,36 +100,24 @@ public class UserServlet extends HttpServlet {
                 req.setAttribute("users", users);
                 req.setAttribute("successMessage", "User deleted successfully!");
                 req.getRequestDispatcher("viewUsers.jsp").forward(req, resp);
-            } catch (IllegalArgumentException ex) {
+
+            } catch (IllegalArgumentException ex) { // Validation errors
                 resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                 out.write("{\"error\":\"" + ex.getMessage().replace("\"", "\\\"") + "\"}");
-            } catch (Exception ex) {
+
+            } catch (Exception ex) { // Internal server errors
                 resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                out.write("{\"error\":\"Failed to delete user: "
+                out.write("{\"error\":\"Internal Server Error: Unable to delete user. "
                         + ex.getMessage().replace("\"", "\\\"") + "\"}");
             }
         }
     }
 
-   // @Override
-//    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//        try {
-//            List<User> users = userService.getUsers();
-//            request.setAttribute("users", users);
-//            request.getRequestDispatcher("viewUsers.jsp").forward(request, response);
-//        } catch (Exception e) {
-//            request.setAttribute("error", "Failed to retrieve users: " + e.getMessage());
-//            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-//            request.getRequestDispatcher("viewUsers.jsp").forward(request, response);
-//        }
-//    }
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        String path = req.getServletPath();   // /getUsers, /getUser, or /editUser
+        String path = req.getServletPath();
 
         switch (path) {
             case "/users":
@@ -171,10 +162,13 @@ public class UserServlet extends HttpServlet {
                 req.getRequestDispatcher("editUser.jsp").forward(req, resp);
 
             } catch (IllegalArgumentException ex) {
-                req.setAttribute("error", "User not found: " + ex.getMessage());
+                req.setAttribute("error", "Validation Error: " + ex.getMessage());
+                resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                 req.getRequestDispatcher("editUser.jsp").forward(req, resp);
+
             } catch (Exception ex) {
-                req.setAttribute("error", "Error retrieving user: " + ex.getMessage());
+                req.setAttribute("error", "Internal Server Error: Unable to retrieve user. " + ex.getMessage());
+                resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
                 req.getRequestDispatcher("editUser.jsp").forward(req, resp);
             }
 
@@ -197,6 +191,7 @@ public class UserServlet extends HttpServlet {
             String password = req.getParameter("password");
             String name = req.getParameter("name");
             String mobile = req.getParameter("mobile");
+            String role = req.getParameter("role");
 
             if (email == null || email.trim().isEmpty()) {
                 resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -223,7 +218,7 @@ public class UserServlet extends HttpServlet {
             try {
                 String finalPassword = password != null && !password.isEmpty() ?
                         password : userService.getUserByEmail(email.trim()).getPassword();
-                userService.updateUser(new User(email.trim(), finalPassword, name, mobile));
+                userService.updateUser(new User(email.trim(), finalPassword, name, mobile, role));
                 if (isAjaxRequest(req)) {
                     out.print("{\"success\":\"User updated successfully\"}");
                 } else {

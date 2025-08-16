@@ -1,6 +1,6 @@
 package com.bookshop.service;
 
-import com.bookshop.dao.UserDAO;
+import com.bookshop.dao.interfaces.UserDAO;
 import com.bookshop.dao.UserDAOImpl;
 import com.bookshop.model.User;
 import java.util.List;
@@ -32,6 +32,9 @@ public class UserService {
         }
         if (user.getMobile() == null || user.getMobile().trim().isEmpty()) {
             throw new IllegalArgumentException("Mobile cannot be empty");
+        }
+        if (user.getRole() == null || user.getRole().trim().isEmpty()) {
+            throw new IllegalArgumentException("Role cannot be empty");
         }
 
         // Additional validation (e.g., email format)
@@ -106,7 +109,9 @@ public class UserService {
         if (user.getMobile() == null || user.getMobile().trim().isEmpty()) {
             throw new IllegalArgumentException("Mobile cannot be empty");
         }
-
+        if (user.getRole() == null || user.getRole().trim().isEmpty()) {
+            throw new IllegalArgumentException("Role cannot be empty");
+        }
         // Additional validation (e.g., email format)
         if (!isValidEmail(user.getEmail())) {
             throw new IllegalArgumentException("Invalid email format");

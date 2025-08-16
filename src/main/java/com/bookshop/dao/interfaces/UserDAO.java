@@ -1,4 +1,4 @@
-package com.bookshop.dao;
+package com.bookshop.dao.interfaces;
 
 import com.bookshop.model.User;
 import java.util.List;
