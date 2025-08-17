@@ -27,6 +27,8 @@
             <a href="customers">View Customers</a>
             <a href="register.jsp">Create New Account</a>
             <a href="users">View Registered Users</a>
+            <a href="createProduct.jsp">Create Product</a>
+            <a href="viewProducts">View Product</a>
         </div>
     </div>
 </body>
