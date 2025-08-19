@@ -20,6 +20,16 @@
     <servlet-class>com.bookshop.controller.CustomerServlet</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>ProductServlet</servlet-name>
+    <servlet-class>com.bookshop.controller.ProductServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>SaleServlet</servlet-name>
+    <servlet-class>com.bookshop.controller.SaleServlet</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>UserServlet</servlet-name>
     <url-pattern>/register</url-pattern>
@@ -73,6 +83,41 @@
   <servlet-mapping>
     <servlet-name>CustomerServlet</servlet-name>
     <url-pattern>/editCustomer</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>ProductServlet</servlet-name>
+    <url-pattern>/saveProduct</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>ProductServlet</servlet-name>
+    <url-pattern>/viewProducts</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>ProductServlet</servlet-name>
+    <url-pattern>/deleteProduct</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>ProductServlet</servlet-name>
+    <url-pattern>/editProduct</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>ProductServlet</servlet-name>
+    <url-pattern>/updateProduct</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>SaleServlet</servlet-name>
+    <url-pattern>/saveSale</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>SaleServlet</servlet-name>
+    <url-pattern>/sales</url-pattern>
   </servlet-mapping>
 
 </web-app>

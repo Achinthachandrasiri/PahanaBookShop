@@ -116,6 +116,10 @@ public class CustomerService {
         }
     }
 
+    public List<Customer> getAllCustomers() throws Exception {
+        return customerDAO.getCustomer(); // Uses your existing DAO method
+    }
+
     // Email validation helper
 //    private boolean isValidEmail(String email) {
 //        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";

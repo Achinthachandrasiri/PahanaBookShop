@@ -8,23 +8,24 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    background: linear-gradient(135deg, #1C2833 0%, #2E4053 100%);
+    background: linear-gradient(135deg, #f0f2f5, #d9e2ec);
     color: #1C2833;
 }
 
 .container {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 40px 20px;
 }
 
 .header {
-    background: rgba(244, 246, 246, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
     border-radius: 20px 20px 0 0;
     padding: 30px 40px;
     border: 1px solid rgba(170, 183, 184, 0.3);
     border-bottom: none;
+    text-align: center;
 }
 
 h2 {
@@ -32,38 +33,38 @@ h2 {
     margin: 0;
     font-size: 32px;
     font-weight: 600;
-    text-align: center;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .content {
-    background: rgba(244, 246, 246, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
     border-radius: 0 0 20px 20px;
     padding: 40px;
     border: 1px solid rgba(170, 183, 184, 0.3);
     border-top: none;
-    box-shadow: 0 20px 40px rgba(28, 40, 51, 0.3);
+    box-shadow: 0 20px 40px rgba(28, 40, 51, 0.15);
 }
 
 .message {
     padding: 15px 20px;
-    border-radius: 10px;
+    border-radius: 12px;
     margin-bottom: 25px;
     font-weight: 500;
     text-align: center;
+    font-size: 14px;
 }
 
 .error {
     background-color: rgba(231, 76, 60, 0.1);
     color: #e74c3c;
-    border: 1px solid rgba(231, 76, 60, 0.3);
+    border: 1px solid rgba(231, 76, 60, 0.2);
 }
 
 .success {
-    background-color: rgba(39, 174, 96, 0.1);
-    color: #27ae60;
-    border: 1px solid rgba(39, 174, 96, 0.3);
+    background-color: rgba(37, 99, 235, 0.1);
+    color: #2563eb;
+    border: 1px solid rgba(37, 99, 235, 0.3);
 }
 
 .no-customers {
@@ -79,7 +80,7 @@ h2 {
 .table-container {
     overflow-x: auto;
     border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(28, 40, 51, 0.2);
+    box-shadow: 0 10px 25px rgba(28, 40, 51, 0.1);
     background: #F4F6F6;
     animation: fadeInUp 0.6s ease-out;
 }
@@ -90,19 +91,17 @@ table {
     background: #F4F6F6;
     border-radius: 15px;
     overflow: hidden;
-    min-width: 800px;
 }
 
 th {
-    background: linear-gradient(135deg, #2E4053 0%, #1C2833 100%);
-    color: #F4F6F6;
+    background: #1C2833 ;
+    color: #fff;
     padding: 20px 15px;
     text-align: left;
     font-weight: 600;
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border: none;
 }
 
 td {
@@ -114,7 +113,7 @@ td {
 }
 
 tr:hover td {
-    background-color: rgba(170, 183, 184, 0.1);
+    background-color: rgba(37, 99, 235, 0.05);
 }
 
 tr:last-child td {
@@ -126,26 +125,11 @@ tr:last-child td {
     text-align: center;
 }
 
-.address-column {
-    max-width: 200px;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-}
-
-.account-column {
-    font-family: 'Courier New', monospace;
-    font-weight: 600;
-}
-
-.mobile-column {
-    font-family: 'Courier New', monospace;
-}
-
 .action-btn {
     padding: 8px 16px;
     margin: 3px;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 12px;
     font-weight: 600;
     display: inline-block;
@@ -164,7 +148,7 @@ tr:last-child td {
 .edit-btn:hover {
     background: linear-gradient(135deg, #229954 0%, #27ae60 100%);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
+    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.25);
 }
 
 .delete-btn {
@@ -175,7 +159,7 @@ tr:last-child td {
 .delete-btn:hover {
     background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.25);
 }
 
 .delete-form {
@@ -199,72 +183,31 @@ tr:last-child td {
     padding: 12px 24px;
     border-radius: 25px;
     transition: all 0.3s ease;
-    border: 2px solid #AAB7B8;
-    background-color: rgba(244, 246, 246, 0.8);
+    border: 2px solid #2E4053;
+    background-color: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(5px);
 }
 
 .nav-link:hover {
-    background: linear-gradient(135deg, #2E4053 0%, #1C2833 100%);
+    background: linear-gradient(135deg, #1C2833 0%, #2E4053 100%);
     color: #F4F6F6;
-    border-color: #2E4053;
+    border-color:#2E4053;
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(46, 64, 83, 0.3);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
 }
 
 @media (max-width: 768px) {
-    .container {
-        padding: 20px 10px;
-    }
-
-    .header, .content {
-        padding: 20px;
-    }
-
-    h2 {
-        font-size: 24px;
-    }
-
-    .table-container {
-        font-size: 14px;
-    }
-
-    th, td {
-        padding: 12px 8px;
-    }
-
-    .actions-column {
-        width: 140px;
-    }
-
-    .address-column {
-        max-width: 150px;
-    }
-
-    .action-btn {
-        padding: 6px 12px;
-        font-size: 11px;
-        margin: 2px;
-    }
-
-    .navigation {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .nav-link {
-        width: 100%;
-        text-align: center;
-    }
+    .container { padding: 20px 10px; }
+    .header, .content { padding: 20px; }
+    h2 { font-size: 24px; }
+    th, td { padding: 12px 8px; font-size: 14px; }
+    .actions-column { width: 140px; }
+    .action-btn { padding: 6px 12px; font-size: 11px; margin: 2px; }
+    .navigation { flex-direction: column; gap: 10px; }
+    .nav-link { width: 100%; text-align: center; }
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }

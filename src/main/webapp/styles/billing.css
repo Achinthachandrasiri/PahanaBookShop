@@ -1,0 +1,211 @@
+/* ===== Reset ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f2f5;
+    min-height: 100vh;
+    color: #2d3748;
+    line-height: 1.6;
+}
+
+/* ===== Smart POS Layout ===== */
+.pos-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Left Panel - Cart & Billing (40%) */
+.pos-left {
+    width: 40%;
+    background: #ffffff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    border-right: 2px solid #e2e8f0;
+}
+
+/* Right Panel - Products Grid (60%) */
+.pos-right {
+    width: 60%;
+    background: #f8fafc;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Panel Header */
+.pos-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.pos-header h1,
+.pos-header h2 {
+    margin-bottom: 5px;
+    color: #1C2833;
+}
+
+.pos-header p {
+    color: #64748b;
+    font-weight: 500;
+}
+
+/* Form Sections */
+.pos-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f8fafc;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.pos-section:hover {
+    box-shadow: 0 4px 12px rgba(28, 40, 51, 0.08);
+}
+
+/* Section Titles */
+.pos-section-title {
+    font-weight: 600;
+    color: #1C2833;
+    margin-bottom: 12px;
+}
+
+/* Inputs & Selects */
+.pos-input,
+.pos-select {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 2px solid #e2e8f0;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.pos-input:focus,
+.pos-select:focus {
+    border-color: #1C2833;
+    box-shadow: 0 0 0 3px rgba(28, 40, 51, 0.1);
+}
+
+/* Add to Cart Button */
+.pos-btn-add {
+    width: 100%;
+    padding: 12px;
+    background: #1C2833;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+}
+
+.pos-btn-add:hover {
+    background: #2E4053;
+    transform: translateY(-2px);
+}
+
+/* Cart Table */
+.pos-cart-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.pos-cart-table th {
+    background: #1C2833;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+.pos-cart-table td {
+    padding: 10px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.pos-cart-table tbody tr:hover {
+    background: #f1f5f9;
+}
+
+/* Totals & Payment */
+.pos-totals,
+.pos-payment {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f0f2f5;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+}
+
+.pos-total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.pos-grand-total {
+    font-size: 1.2rem;
+    color: #1C2833;
+}
+
+/* Right Panel - Product Grid */
+.pos-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+}
+
+.pos-product-card {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 12px;
+    border: 2px solid #e2e8f0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.pos-product-card:hover {
+    border-color: #1C2833;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(28, 40, 51, 0.15);
+}
+
+.pos-product-name {
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.pos-product-price {
+    font-weight: 700;
+    color: #f59e0b;
+    font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .pos-container {
+        flex-direction: column;
+    }
+    .pos-left,
+    .pos-right {
+        width: 100%;
+    }
+    .pos-products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+}
