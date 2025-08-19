@@ -28,9 +28,16 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h2>Registered Users - Pahana Bookshop</h2>
-        </div>
+       <div class="header">
+           <h2 style="color: #1C2833;
+                      margin: 0;
+                      font-size: 32px;
+                      font-weight: 600;
+                      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+               Registered Users - Pahana Bookshop
+           </h2>
+       </div>
+
 
         <div class="content">
             <%

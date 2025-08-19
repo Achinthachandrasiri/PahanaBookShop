@@ -92,6 +92,10 @@ public class ProductService {
         }
     }
 
+    public boolean reduceProductQuantity(String productCode, int quantity) throws Exception {
+        return productDAO.reduceQuantity(productCode, quantity);
+    }
+
     private boolean isNullOrEmpty(String str) {
         return str == null || str.trim().isEmpty();
     }

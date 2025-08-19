@@ -25,6 +25,11 @@
     <servlet-class>com.bookshop.controller.ProductServlet</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>SaleServlet</servlet-name>
+    <servlet-class>com.bookshop.controller.SaleServlet</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>UserServlet</servlet-name>
     <url-pattern>/register</url-pattern>
@@ -105,6 +110,15 @@
     <url-pattern>/updateProduct</url-pattern>
   </servlet-mapping>
 
+  <servlet-mapping>
+    <servlet-name>SaleServlet</servlet-name>
+    <url-pattern>/saveSale</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>SaleServlet</servlet-name>
+    <url-pattern>/sales</url-pattern>
+  </servlet-mapping>
 
 </web-app>
 

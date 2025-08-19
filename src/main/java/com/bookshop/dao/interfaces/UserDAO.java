@@ -9,4 +9,5 @@ public interface UserDAO {
     void delete(String email) throws Exception;
     User getUserByEmail(String email) throws Exception;
     void updateUser(User user) throws Exception;
+    int getUserCount();
 }

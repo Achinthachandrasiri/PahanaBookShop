@@ -165,4 +165,39 @@ public class ProductDAOImpl implements ProductDAO {
             return false;
         }
     }
+
+    @Override
+    public int getTotalProducts() {
+        int total = 0;
+        try (Connection connection = DBConnection.getConnection()) {
+            String sql = "SELECT COUNT(*) FROM products";  // table name "products"
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                total = rs.getInt(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return total;
+    }
+
+    @Override
+    public boolean reduceQuantity(String productCode, int quantity) throws Exception {
+        String sql = "UPDATE products SET quantity = quantity - ? WHERE code = ? AND quantity >= ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, quantity);
+            stmt.setString(2, productCode);
+            stmt.setInt(3, quantity);
+
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0; // false if stock not enough
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception("Error reducing stock: " + e.getMessage());
+        }
+    }
+
 }
