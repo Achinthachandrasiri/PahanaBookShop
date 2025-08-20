@@ -8,7 +8,7 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background: #1C2833;
+            background: linear-gradient(135deg, #f0f2f5, #d9e2ec);
             height: 100vh;
             display: flex;
             justify-content: center;

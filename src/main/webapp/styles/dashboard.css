@@ -75,6 +75,30 @@ body {
     gap: 8px;
 }
 
+/* Popup overlay */
+#helpPopup {
+    display: none; /* hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;  /* use viewport height */
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+    display: flex;              /* flex centering */
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Popup content */
+#helpPopup .popup-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .nav-item {
     display: flex;
     align-items: center;

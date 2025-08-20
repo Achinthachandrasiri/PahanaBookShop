@@ -33,8 +33,8 @@
         }
 
         .billing-container {
-            width: 900px;
-            height: 640px;
+            width: 1100px;
+            height: 670px;
             background: white;
             border-radius: 15px;
             padding: 30px;
@@ -169,7 +169,7 @@
 <body>
 
 <div class="billing-container">
- <div style="text-align:right; margin-bottom: 15px; margin-left:720px;">
+ <div style="text-align:right; margin-bottom: 15px; margin-left:915px;">
         <button type="button" onclick="window.location.href='dashboard.jsp'"
                 style="background-color:#6c757d; color:white; padding:10px 15px; border:none; border-radius:5px; cursor:pointer;">
             <i class="fa fa-arrow-left"></i> Back to Dashboard
