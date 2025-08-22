@@ -227,7 +227,7 @@
                             <option value="admin">Admin</option>
                             <option value="cashier">Cashier</option>
                         </select>
-                        <label for="role">Role</label>
+
                     </div>
                 </div>
             </div>
